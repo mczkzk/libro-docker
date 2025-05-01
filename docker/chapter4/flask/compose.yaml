@@ -1,0 +1,10 @@
+services:
+  web:
+    build: . # カレントディレクトリのDockerfileを指定
+    environment:
+      FLASK_ENV: development
+    ports:
+      # ControlCe は macOS の Control Center（コントロールセンター） のプロセスで 5000 は使用済み
+      - 5001:5000 # ホストマシン：コンテナ
+    volumes:
+      - ./src:/usr/src/app # バインドマウント Dockerfile の WORKDIR で定義
