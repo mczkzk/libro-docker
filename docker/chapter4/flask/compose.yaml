@@ -5,6 +5,7 @@ services:
       FLASK_ENV: development
     ports:
       # ControlCe は macOS の Control Center（コントロールセンター） のプロセスで 5000 は使用済み
+      # ホストのポートを1つずらすのはよくやるテクニック
       - 5001:5000 # ホストマシン：コンテナ
     volumes:
       - ./src:/usr/src/app # バインドマウント Dockerfile の WORKDIR で定義

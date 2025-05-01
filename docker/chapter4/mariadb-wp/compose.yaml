@@ -17,7 +17,7 @@ services:
     depends_on:
       - db # dbコンテナが作成された後にwordpressコンテナが作成される
     ports:
-      - 8080:80
+      - 8080:80 # ホストマシン：コンテナ
     environment:
       WORDPRESS_DB_HOST: db # MariaDBのコンテナ名
       WORDPRESS_DB_NAME: wordpress # MariaDBのデータベース名
