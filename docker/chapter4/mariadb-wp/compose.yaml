@@ -1,0 +1,30 @@
+services:
+  db:
+    image: mariadb:10.11
+    # 環境変数はドキュメントで調べる
+    # https://hub.docker.com/_/mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+    volumes:
+      # コンテナ内の/var/lib/mysqlディレクトリにdb-dataという名前付きボリュームをマウント
+      - db-data:/var/lib/mysql
+  wordpress:
+    image: wordpress:latest
+    # コンテナ間の依存
+    depends_on:
+      - db # dbコンテナが作成された後にwordpressコンテナが作成される
+    ports:
+      - 8080:80
+    environment:
+      WORDPRESS_DB_HOST: db # MariaDBのコンテナ名
+      WORDPRESS_DB_NAME: wordpress # MariaDBのデータベース名
+      WORDPRESS_DB_USER: wordpress # MariaDBのユーザー名
+      WORDPRESS_DB_PASSWORD: wordpress # MariaDBのパスワード
+    volumes:
+      - wordpress-data:/var/www/html
+volumes:
+  db-data:
+  wordpress-data:
