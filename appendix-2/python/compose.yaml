@@ -1,0 +1,10 @@
+services:
+  python:
+    build: .
+    volumes:
+      - .:/src
+    working_dir: /src
+    tty: true
+    stdin_open: true
+    environment:
+      - PYTHONUNBUFFERED=1

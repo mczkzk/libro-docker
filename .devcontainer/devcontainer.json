@@ -1,0 +1,14 @@
+{
+    "name": "Python Development",
+    "dockerComposeFile": "../appendix-2/python/compose.yaml",
+    "service": "python",
+    "workspaceFolder": "/src",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-python.vscode-pylance"
+            ]
+        }
+    }
+}
